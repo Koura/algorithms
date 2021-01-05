@@ -31,3 +31,4 @@ To run the examples simply navigate to the subfolder where the algorithm you are
 ### Sorting <a name = "sorting"></a>
 
 - [Bubble sort](sorting/bubble_sort.zig)
+- [Insertion sort](sorting/insertion_sort.zig)
