@@ -9,12 +9,14 @@
 - [Usage](#usage)
 - [Algorithms](#algorithms)
   - [Sorting](#sorting)
-- [Contributing](#contributing)
+- [Contributing](CONTRIBUTING.md)
 - [License](LICENSE)
 
 ## About <a name = "about"></a>
 
-TODO
+The purpose of this project is to provide example implementations of algorithms with minimal dependencies for educational use. The algorithms implemented here are meant to be easy to run and try out to support reviewing, discovering and gaining a deeper understanding of the algorithms showcased in this repository. Optimizations are applied to implementations if they either make the implementation easier to understand or highlight the essence of the algorithm well.
+
+A new algorithm will be added at least once every other week.
 
 ## Prerequisite <a name = "prerequisite"></a>
 
@@ -29,7 +31,3 @@ To run the examples simply navigate to the subfolder where the algorithm you are
 ### Sorting <a name = "sorting"></a>
 
 - [Bubble sort](sorting/bubble_sort.zig)
-
-## :page_with_curl: Contributing <a name = "contributing"></a>
-
-TODO
