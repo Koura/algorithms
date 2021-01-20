@@ -3,6 +3,7 @@ const builtin = std.builtin;
 const expect = std.testing.expect;
 const mem = std.mem;
 
+///Sources: https://en.wikipedia.org/wiki/Bubble_sort
 pub fn sort(A: []i32) void {
     var n = A.len;
     while (n > 1) {
@@ -13,6 +14,7 @@ pub fn sort(A: []i32) void {
                 new_n = i + 1;
             }
         }
+        // After each iteration the biggest element bubbles up the array
         n = new_n;
     }
 }
@@ -27,7 +29,7 @@ test "empty array" {
 }
 
 test "array with one element" {
-    var array: [1]i32 = [1]i32{5};
+    var array: [1]i32 = .{5};
     sort(&array);
     const a = array.len;
     expect(a == 1);
@@ -35,7 +37,7 @@ test "array with one element" {
 }
 
 test "sorted array" {
-    var array: [10]i32 = [10]i32{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+    var array: [10]i32 = .{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
     sort(&array);
     for (array) |value, i| {
         expect(value == (i + 1));
@@ -43,7 +45,7 @@ test "sorted array" {
 }
 
 test "reverse order" {
-    var array: [10]i32 = [10]i32{ 10, 9, 8, 7, 6, 5, 4, 3, 2, 1 };
+    var array: [10]i32 = .{ 10, 9, 8, 7, 6, 5, 4, 3, 2, 1 };
     sort(&array);
     for (array) |value, i| {
         expect(value == (i + 1));
@@ -51,7 +53,7 @@ test "reverse order" {
 }
 
 test "unsorted array" {
-    var array: [5]i32 = [5]i32{ 5, 3, 4, 1, 2 };
+    var array: [5]i32 = .{ 5, 3, 4, 1, 2 };
     sort(&array);
     for (array) |value, i| {
         expect(value == (i + 1));
@@ -59,7 +61,7 @@ test "unsorted array" {
 }
 
 test "two last unordered" {
-    var array: [10]i32 = [10]i32{ 1, 2, 3, 4, 5, 6, 7, 8, 10, 9 };
+    var array: [10]i32 = .{ 1, 2, 3, 4, 5, 6, 7, 8, 10, 9 };
     sort(&array);
     for (array) |value, i| {
         expect(value == (i + 1));
@@ -67,7 +69,7 @@ test "two last unordered" {
 }
 
 test "two first unordered" {
-    var array: [10]i32 = [10]i32{ 2, 1, 3, 4, 5, 6, 7, 8, 9, 10 };
+    var array: [10]i32 = .{ 2, 1, 3, 4, 5, 6, 7, 8, 9, 10 };
     sort(&array);
     for (array) |value, i| {
         expect(value == (i + 1));
