@@ -10,6 +10,8 @@
 
 ## Running <a name = "running"></a>
 
+To test another algorithm change the name of the `.zig` file to point to another implementation.
+
 ```console
 zig build-exe bubble_sort.zig
 ./bubble_sort
@@ -23,7 +25,15 @@ zig test bubble_sort.zig
 
 ## Comparison <a name = "comparison"></a>
 
-Table comparing the runtimes of sorting algoritms coming soon...
+| Algorithm      | Stable |  Time Complexity   | Space Complexity |
+| -------------- | :----: | :----------------: | :--------------- |
+| Bubble sort    |  yes   | _O(n<sup>2</sup>)_ | _O(1)_           |
+| Insertion sort |  yes   | _O(n<sup>2</sup>)_ | _O(1)_           |
+
+Table glossary:
+
+**Stable:** original order of elements of equal value is preserved\
+**n:** length of the array
 
 ## Benchmarks <a name = "benchmarks"></a>
 
