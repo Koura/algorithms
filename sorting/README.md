@@ -26,9 +26,9 @@ zig test bubble_sort.zig
 ## Comparison <a name = "comparison"></a>
 
 | Algorithm      | Stable |  Time Complexity   | Space Complexity |
-| -------------- | :----: | :----------------: | :--------------- |
-| Bubble sort    |  yes   | _O(n<sup>2</sup>)_ | _O(1)_           |
-| Insertion sort |  yes   | _O(n<sup>2</sup>)_ | _O(1)_           |
+| -------------- | :----: | :----------------: | :--------------: |
+| Bubble sort    |  yes   | _O(n<sup>2</sup>)_ |      _O(1)_      |
+| Insertion sort |  yes   | _O(n<sup>2</sup>)_ |      _O(1)_      |
 
 Table glossary:
 
