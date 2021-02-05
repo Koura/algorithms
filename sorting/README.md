@@ -25,10 +25,13 @@ zig test bubble_sort.zig
 
 ## Comparison <a name = "comparison"></a>
 
-| Algorithm      | Stable |  Time Complexity   | Space Complexity |
-| -------------- | :----: | :----------------: | :--------------: |
-| Bubble sort    |  yes   | _O(n<sup>2</sup>)_ |      _O(1)_      |
-| Insertion sort |  yes   | _O(n<sup>2</sup>)_ |      _O(1)_      |
+Information in the table applies for the versions of algorithms implemented here. Other variants of the same algorithms may have differing characteristics.
+
+| Algorithm      | Stable | Average Performance | Space Complexity |
+| -------------- | :----: | :-----------------: | :--------------: |
+| Bubble sort    |  yes   | _O(n<sup>2</sup>)_  |      _O(1)_      |
+| Insertion sort |  yes   | _O(n<sup>2</sup>)_  |      _O(1)_      |
+| Quicksort      |   no   |    _O(n log n)_     |      _O(n)_      |
 
 Table glossary:
 
