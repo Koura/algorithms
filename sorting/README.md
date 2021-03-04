@@ -38,7 +38,7 @@ Information in the table applies for the versions of algorithms implemented here
 Table glossary:
 
 **Stable:** original order of elements of equal value is preserved\
-**n:** length of the array
+**n:** length of the array\
 **w:** number of bits required to store each key
 
 ## Benchmarks <a name = "benchmarks"></a>
