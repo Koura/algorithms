@@ -34,3 +34,4 @@ To run the examples simply navigate to the subfolder where the algorithm you are
 - [Insertion sort](sorting/insertion_sort.zig)
 - [Quicksort](sorting/quicksort.zig)
 - [Merge sort](sorting/merge_sort.zig)
+- [Radix sort](sorting/radix_sort.zig)

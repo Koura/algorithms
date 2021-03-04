@@ -33,11 +33,13 @@ Information in the table applies for the versions of algorithms implemented here
 | Insertion sort |  yes   | _O(n<sup>2</sup>)_  |           _O(1)_           |
 | Quicksort      |   no   |    _O(n log n)_     |           _O(n)_           |
 | Merge sort     |  yes   |    _O(n log n)_     |           _O(n)_           |
+| Radix sort     |  yes   |      _O(w\*n)_      |          _O(w+n)_          |
 
 Table glossary:
 
 **Stable:** original order of elements of equal value is preserved\
 **n:** length of the array
+**w:** number of bits required to store each key
 
 ## Benchmarks <a name = "benchmarks"></a>
 
