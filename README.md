@@ -6,7 +6,8 @@
 
 - [About](#about)
 - [Prerequisite](#prerequisite)
-- [Usage](#usage)
+- [Running](#running)
+- [Testing](#testing)
 - [Algorithms](#algorithms)
   - [Sorting](#sorting)
 - [Contributing](CONTRIBUTING.md)
@@ -22,16 +23,35 @@ A new algorithm will be added at least once every other week.
 
 - [Zig](https://ziglang.org/download/)
 
-## Usage <a name = "usage"></a>
+## Running <a name = "running"></a>
 
-To run the examples simply navigate to the subfolder where the algorithm you are interested in is located and follow the README instructions.
+```console
+zig build bubble_sort
+```
+
+Use `zig build --help` to see other available algorithms.
+
+## Testing <a name = "testing"></a>
+
+Heap sort:
+
+```console
+zig test sorting/heap_sort.zig --main-pkg-path .
+```
+
+Everything else:
+
+```console
+zig test <path_to_algorithm>.zig
+```
 
 ## :hammer: Algorithms <a name = "algorithms"></a>
 
 ### Sorting <a name = "sorting"></a>
 
 - [Bubble sort](sorting/bubble_sort.zig)
+- [Heap sort](sorting/heap_sort.zig)
 - [Insertion sort](sorting/insertion_sort.zig)
-- [Quicksort](sorting/quicksort.zig)
 - [Merge sort](sorting/merge_sort.zig)
+- [Quicksort](sorting/quicksort.zig)
 - [Radix sort](sorting/radix_sort.zig)
