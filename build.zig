@@ -1,12 +1,12 @@
 const Builder = @import("std").build.Builder;
 const fmt = std.fmt;
 
-pub fn buildExample(b: *Builder, comptime name: []const u8) void {
+pub fn buildExample(b: *Builder, comptime path: []const u8, comptime name: []const u8) void {
     // Standard release options allow the person running `zig build` to select
     // between Debug, ReleaseSafe, ReleaseFast, and ReleaseSmall.
     const mode = b.standardReleaseOptions();
 
-    const exe = b.addExecutable(name, "sorting/" ++ name ++ ".zig");
+    const exe = b.addExecutable(name, path ++ "/" ++ name ++ ".zig");
     exe.setBuildMode(mode);
     exe.install();
 
@@ -21,9 +21,10 @@ pub fn buildExample(b: *Builder, comptime name: []const u8) void {
 }
 
 pub fn build(b: *Builder) void {
-    buildExample(b, "bubble_sort");
-    buildExample(b, "heap_sort");
-    buildExample(b, "insertion_sort");
-    buildExample(b, "radix_sort");
-    buildExample(b, "quicksort");
+    buildExample(b, "sorting", "bubble_sort");
+    buildExample(b, "sorting", "heap_sort");
+    buildExample(b, "sorting", "insertion_sort");
+    buildExample(b, "sorting", "radix_sort");
+    buildExample(b, "sorting", "quicksort");
+    buildExample(b, "search_trees", "binary_search_tree");
 }

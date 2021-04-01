@@ -9,6 +9,7 @@
 - [Running](#running)
 - [Testing](#testing)
 - [Algorithms](#algorithms)
+  - [Search Trees](#search_trees)
   - [Sorting](#sorting)
 - [Contributing](CONTRIBUTING.md)
 - [License](LICENSE)
@@ -46,6 +47,10 @@ zig test <path_to_algorithm>.zig
 ```
 
 ## :hammer: Algorithms <a name = "algorithms"></a>
+
+### Search Trees <a name = "search_trees">
+
+- [Binary search tree](search_trees/binary_search_tree.zig)
 
 ### Sorting <a name = "sorting"></a>
 
