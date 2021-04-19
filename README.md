@@ -50,6 +50,7 @@ zig test <path_to_algorithm>.zig
 
 ### Search Trees <a name = "search_trees">
 
+- [B-tree search](search_trees/b_tree_search.zig)
 - [Binary search tree](search_trees/binary_search_tree.zig)
 
 ### Sorting <a name = "sorting"></a>
