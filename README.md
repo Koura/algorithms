@@ -52,6 +52,7 @@ zig test <path_to_algorithm>.zig
 
 - [B-tree search](search_trees/b_tree_search.zig)
 - [Binary search tree](search_trees/binary_search_tree.zig)
+- [Left-leaning red-black tree](search_trees/llrb_tree.zig)
 
 ### Sorting <a name = "sorting"></a>
 
