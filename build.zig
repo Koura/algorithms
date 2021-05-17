@@ -28,4 +28,5 @@ pub fn build(b: *Builder) void {
     buildExample(b, "sorting", "quicksort");
     buildExample(b, "search_trees", "binary_search_tree");
     buildExample(b, "search_trees", "b_tree_search");
+    buildExample(b, "search_trees", "trie");
 }
