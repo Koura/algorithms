@@ -2,7 +2,7 @@ const std = @import("std");
 const expect = std.testing.expect;
 const assert = std.debug.assert;
 
-///Source: https://en.wikipedia.org/wiki/Merge_sort
+///References: https://en.wikipedia.org/wiki/Merge_sort
 ///A is the array to be sorted and B is extra storage required by merge sort.
 ///Responsibility for initialization of B is left to the calling side
 pub fn sort(A: []i32, B: []i32) void {

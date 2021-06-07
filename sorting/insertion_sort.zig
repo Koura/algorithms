@@ -3,7 +3,7 @@ const builtin = std.builtin;
 const expect = std.testing.expect;
 const mem = std.mem;
 
-///Sources: https://en.wikipedia.org/wiki/Insertion_sort
+///References: https://en.wikipedia.org/wiki/Insertion_sort
 pub fn sort(A: []i32) void {
     var i: usize = 1;
     while (i < A.len) : (i += 1) {

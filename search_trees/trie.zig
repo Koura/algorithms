@@ -15,7 +15,7 @@ const Node = struct {
     }
 };
 
-///Sources: https://en.wikipedia.org/wiki/Trie
+///References: https://en.wikipedia.org/wiki/Trie
 const Tree = struct {
     root: *Node,
 

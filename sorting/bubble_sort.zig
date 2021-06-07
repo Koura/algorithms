@@ -3,7 +3,7 @@ const builtin = std.builtin;
 const expect = std.testing.expect;
 const mem = std.mem;
 
-///Sources: https://en.wikipedia.org/wiki/Bubble_sort
+///References: https://en.wikipedia.org/wiki/Bubble_sort
 pub fn sort(A: []i32) void {
     var n = A.len;
     while (n > 1) {

@@ -18,7 +18,7 @@ pub fn SearchTuple(comptime T: type) type {
     };
 }
 
-/// Sources: Introduction to algorithms / Thomas H. Cormen...[et al.]. -3rd ed.
+/// References: Introduction to algorithms / Thomas H. Cormen...[et al.]. -3rd ed.
 /// To make things simpler diskWrite and diskRead are not implemented here but
 /// the code contains comments when these would be performed.
 pub fn Tree(comptime T: type) type {

@@ -37,7 +37,7 @@ pub fn counting_sort(A: []i32, B: []i32, C: []usize, exp: i32, radix: usize) voi
     }
 }
 
-///Sources: https://brilliant.org/wiki/radix-sort/
+///References: https://brilliant.org/wiki/radix-sort/
 ///         https://en.wikipedia.org/wiki/Radix_sort
 ///LSD radix sort
 pub fn sort(A: []i32, B: []i32, radix: usize) !void {

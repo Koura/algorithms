@@ -10,7 +10,7 @@ fn Node(comptime T: type) type {
     };
 }
 
-/// Sources: Introduction to algorithms / Thomas H. Cormen...[et al.]. -3rd ed.
+/// References: Introduction to algorithms / Thomas H. Cormen...[et al.]. -3rd ed.
 fn Tree(comptime T: type) type {
     return struct {
         root: ?*Node(T) = null,

@@ -3,7 +3,7 @@ const builtin = std.builtin;
 const expect = std.testing.expect;
 const mem = std.mem;
 
-///Sources: https://en.wikipedia.org/wiki/Quicksort
+///References: https://en.wikipedia.org/wiki/Quicksort
 pub fn sort(A: []i32, lo: usize, hi: usize) void {
     if (lo < hi) {
         var p = partition(A, lo, hi);

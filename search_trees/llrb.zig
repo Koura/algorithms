@@ -16,7 +16,7 @@ fn Node(comptime T: type) type {
     };
 }
 
-/// Sources: https://www.cs.princeton.edu/~rs/talks/LLRB/LLRB.pdf
+/// References: https://www.cs.princeton.edu/~rs/talks/LLRB/LLRB.pdf
 fn Tree(comptime T: type) type {
     return struct {
         root: ?*Node(T) = null,

@@ -4,7 +4,7 @@ const expect = std.testing.expect;
 const max_heap = @import("../data_structures/max_heap.zig");
 const mem = std.mem;
 
-/// Sources: Introduction to algorithms / Thomas H. Cormen...[et al.]. -3rd ed.
+/// References: Introduction to algorithms / Thomas H. Cormen...[et al.]. -3rd ed.
 pub fn sort(A: []i32) void {
     if (A.len <= 1) {
         return;
