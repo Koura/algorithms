@@ -16,7 +16,7 @@ fn Node(comptime T: type) type {
     };
 }
 
-/// Sources: https://www.cs.princeton.edu/~rs/talks/LLRB/LLRB.pdf
+/// References: https://www.cs.princeton.edu/~rs/talks/LLRB/LLRB.pdf
 fn Tree(comptime T: type) type {
     return struct {
         root: ?*Node(T) = null,
@@ -110,7 +110,7 @@ pub fn main() !void {}
 test "search empty tree" {
     var tree = Tree(i32){};
     var result = tree.search(3);
-    expect(result == null);
+    try expect(result == null);
 }
 
 test "search an existing element" {
@@ -120,8 +120,8 @@ test "search an existing element" {
     const allocator = &arena_allocator.allocator;
     try tree.insert(3, allocator);
     var result = tree.search(3);
-    expect(result.?.value == 3);
-    expect(result.?.color == BLACK);
+    try expect(result.?.value == 3);
+    try expect(result.?.color == BLACK);
 }
 
 test "search non-existent element" {
@@ -131,7 +131,7 @@ test "search non-existent element" {
     const allocator = &arena_allocator.allocator;
     try tree.insert(3, allocator);
     var result = tree.search(4);
-    expect(result == null);
+    try expect(result == null);
 }
 
 test "search for an element with multiple nodes" {
@@ -144,5 +144,5 @@ test "search for an element with multiple nodes" {
         try tree.insert(v, allocator);
     }
     var result = tree.search(4);
-    expect(result.?.value == 4);
+    try expect(result.?.value == 4);
 }

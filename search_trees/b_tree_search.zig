@@ -8,9 +8,7 @@ const Error = Allocator.Error;
 const t = 2;
 
 pub fn Node(comptime T: type) type {
-    return struct {
-        n: usize, leaf: bool, key: [2 * t]T, c: [2 * t]?*Node(T)
-    };
+    return struct { n: usize, leaf: bool, key: [2 * t]T, c: [2 * t]?*Node(T) };
 }
 
 pub fn SearchTuple(comptime T: type) type {
@@ -20,7 +18,7 @@ pub fn SearchTuple(comptime T: type) type {
     };
 }
 
-/// Sources: Introduction to algorithms / Thomas H. Cormen...[et al.]. -3rd ed.
+/// References: Introduction to algorithms / Thomas H. Cormen...[et al.]. -3rd ed.
 /// To make things simpler diskWrite and diskRead are not implemented here but
 /// the code contains comments when these would be performed.
 pub fn Tree(comptime T: type) type {
@@ -144,7 +142,7 @@ pub fn main() !void {}
 test "search empty tree" {
     var tree = Tree(i32){};
     var result = Tree(i32).search(tree.root, 3);
-    expect(result == null);
+    try expect(result == null);
 }
 
 test "verify tree creation" {
@@ -153,8 +151,8 @@ test "verify tree creation" {
     defer arena_allocator.deinit();
     const allocator = &arena_allocator.allocator;
     try tree.create(allocator);
-    expect(tree.root.?.n == 0);
-    expect(tree.root.?.leaf);
+    try expect(tree.root.?.n == 0);
+    try expect(tree.root.?.leaf);
 }
 
 test "search non-existent element" {
@@ -165,7 +163,7 @@ test "search non-existent element" {
     try tree.create(allocator);
     try tree.insert(3, allocator);
     var result = Tree(i32).search(tree.root, 4);
-    expect(result == null);
+    try expect(result == null);
 }
 
 test "search an existing element" {
@@ -178,8 +176,8 @@ test "search an existing element" {
     var result = Tree(i32).search(tree.root, 3);
     const index = result.?.index;
     const node = result.?.node;
-    expect(index == 0);
-    expect(node.key[index] == 3);
+    try expect(index == 0);
+    try expect(node.key[index] == 3);
 }
 
 test "search with u8 as key" {
@@ -195,8 +193,8 @@ test "search with u8 as key" {
     var result = Tree(u8).search(tree.root, 'F');
     const index = result.?.index;
     const node = result.?.node;
-    expect(index == 0);
-    expect(node.key[index] == 'F');
+    try expect(index == 0);
+    try expect(node.key[index] == 'F');
 }
 
 test "search for an element with multiple nodes" {
@@ -212,7 +210,7 @@ test "search for an element with multiple nodes" {
     var result = Tree(i32).search(tree.root, 9);
     const index = result.?.index;
     const node = result.?.node;
-    expect(result != null);
-    expect(index == 0);
-    expect(node.key[index] == 9);
+    try expect(result != null);
+    try expect(index == 0);
+    try expect(node.key[index] == 9);
 }
