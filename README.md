@@ -22,7 +22,7 @@ A new algorithm will be added at least once every other week.
 
 ## Prerequisite <a name = "prerequisite"></a>
 
-- [Zig](https://ziglang.org/download/)
+- [Zig](https://ziglang.org/download/) 0.8+
 
 ## Running <a name = "running"></a>
 

@@ -42,6 +42,6 @@ test "building a heap" {
     var expected_result: [10]i32 = .{ 16, 14, 10, 8, 7, 9, 3, 2, 4, 1 };
     build_max_heap(&array);
     for (array) |value, i| {
-        expect(expected_result[i] == value);
+        try expect(expected_result[i] == value);
     }
 }

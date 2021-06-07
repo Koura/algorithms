@@ -58,7 +58,7 @@ pub fn main() !void {}
 test "search empty tree" {
     var tree = Tree(i32){};
     var result = Tree(i32).search(tree.root, 3);
-    expect(result == null);
+    try expect(result == null);
 }
 
 test "search an existing element" {
@@ -66,7 +66,7 @@ test "search an existing element" {
     var node = Node(i32){ .value = 3 };
     tree.insert(&node);
     var result = Tree(i32).search(tree.root, 3);
-    expect(result.? == &node);
+    try expect(result.? == &node);
 }
 
 test "search non-existent element" {
@@ -74,7 +74,7 @@ test "search non-existent element" {
     var node = Node(i32){ .value = 3 };
     tree.insert(&node);
     var result = Tree(i32).search(tree.root, 4);
-    expect(result == null);
+    try expect(result == null);
 }
 
 test "search for an element with multiple nodes" {
@@ -85,5 +85,5 @@ test "search for an element with multiple nodes" {
         tree.insert(&node);
     }
     var result = Tree(i32).search(tree.root, 9);
-    expect(result.?.value == 9);
+    try expect(result.?.value == 9);
 }

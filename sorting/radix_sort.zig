@@ -64,11 +64,11 @@ pub fn sort(A: []i32, B: []i32, radix: usize) !void {
 pub fn main() !void {}
 
 test "empty array" {
-    var array: []i32 = &[0]i32{};
-    var work_array: []i32 = &[0]i32{};
+    var array: []i32 = &.{};
+    var work_array: []i32 = &.{};
     try sort(array, work_array, 10);
     const a = array.len;
-    expect(a == 0);
+    try expect(a == 0);
 }
 
 test "array with one element" {
@@ -76,51 +76,51 @@ test "array with one element" {
     var work_array: [1]i32 = .{0};
     try sort(&array, &work_array, 10);
     const a = array.len;
-    expect(a == 1);
-    expect(array[0] == 5);
+    try expect(a == 1);
+    try expect(array[0] == 5);
 }
 
 test "sorted array" {
     var array: [10]i32 = .{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-    var work_array: [10]i32 = [_]i32{0} ** 10;
+    var work_array: [10]i32 = .{0} ** 10;
     try sort(&array, &work_array, 10);
     for (array) |value, i| {
-        expect(value == (i + 1));
+        try expect(value == (i + 1));
     }
 }
 
 test "reverse order" {
     var array: [10]i32 = .{ 10, 9, 8, 7, 6, 5, 4, 3, 2, 1 };
-    var work_array: [10]i32 = [_]i32{0} ** 10;
+    var work_array: [10]i32 = .{0} ** 10;
     try sort(&array, &work_array, 10);
     for (array) |value, i| {
-        expect(value == (i + 1));
+        try expect(value == (i + 1));
     }
 }
 
 test "unsorted array" {
     var array: [5]i32 = .{ 5, 3, 4, 1, 2 };
-    var work_array: [5]i32 = [_]i32{0} ** 5;
+    var work_array: [5]i32 = .{0} ** 5;
     try sort(&array, &work_array, 10);
     for (array) |value, i| {
-        expect(value == (i + 1));
+        try expect(value == (i + 1));
     }
 }
 
 test "two last unordered" {
     var array: [10]i32 = .{ 1, 2, 3, 4, 5, 6, 7, 8, 10, 9 };
-    var work_array: [10]i32 = [_]i32{0} ** 10;
+    var work_array: [10]i32 = .{0} ** 10;
     try sort(&array, &work_array, 10);
     for (array) |value, i| {
-        expect(value == (i + 1));
+        try expect(value == (i + 1));
     }
 }
 
 test "two first unordered" {
     var array: [10]i32 = .{ 2, 1, 3, 4, 5, 6, 7, 8, 9, 10 };
-    var work_array: [10]i32 = [_]i32{0} ** 10;
+    var work_array: [10]i32 = .{0} ** 10;
     try sort(&array, &work_array, 10);
     for (array) |value, i| {
-        expect(value == (i + 1));
+        try expect(value == (i + 1));
     }
 }

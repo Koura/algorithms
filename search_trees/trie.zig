@@ -58,7 +58,7 @@ test "search empty tree" {
     const allocator = &arena_allocator.allocator;
     var tree = try Tree.init(allocator);
     var result = tree.search("car");
-    expect(result == false);
+    try expect(result == false);
 }
 
 test "search existing element" {
@@ -68,7 +68,7 @@ test "search existing element" {
     var tree = try Tree.init(allocator);
     try tree.insert("car", allocator);
     var result = tree.search("car");
-    expect(result == true);
+    try expect(result == true);
 }
 
 test "search non-existing element" {
@@ -78,10 +78,10 @@ test "search non-existing element" {
     var tree = try Tree.init(allocator);
     try tree.insert("car", allocator);
     var result = tree.search("There is no trie");
-    expect(result == false);
+    try expect(result == false);
     //Make sure that partial matches are not marked as present
     result = tree.search("ca");
-    expect(result == false);
+    try expect(result == false);
 }
 
 test "search with multiple words present" {
@@ -97,8 +97,8 @@ test "search with multiple words present" {
     }
     for (words) |word| {
         var result = tree.search(word);
-        expect(result == true);
+        try expect(result == true);
     }
     //Root should have 'A', 't' and 'i' as its children
-    expect(tree.root.children.count() == 3);
+    try expect(tree.root.children.count() == 3);
 }
