@@ -25,19 +25,19 @@ pub fn Tree(comptime T: type) type {
     return struct {
         root: ?*Node(T) = null,
 
-        pub fn create(self: *Tree(T), allocator: *Allocator) !void {
+        pub fn create(self: *Tree(T), allocator: *const Allocator) !void {
             var x = try allocator.create(Node(T));
             //Here we would write to disk -> diskWrite(x)
             x.n = 0;
             x.leaf = true;
-            for (x.c) |_, i| {
+            for (x.c, 0..) |_, i| {
                 x.c[i] = null;
                 x.key[i] = 0;
             }
             self.root = x;
         }
 
-        pub fn insert(self: *Tree(T), k: T, allocator: *Allocator) !void {
+        pub fn insert(self: *Tree(T), k: T, allocator: *const Allocator) !void {
             var r = self.root;
             if (r == null) {
                 return;
@@ -47,7 +47,7 @@ pub fn Tree(comptime T: type) type {
                 self.root = s;
                 s.leaf = false;
                 s.n = 0;
-                for (s.c) |_, i| {
+                for (s.c, 0..) |_, i| {
                     s.c[i] = null;
                     s.key[i] = 0;
                 }
@@ -59,9 +59,9 @@ pub fn Tree(comptime T: type) type {
             }
         }
 
-        fn splitChild(x: *Node(T), i: usize, allocator: *Allocator) Error!void {
+        fn splitChild(x: *Node(T), i: usize, allocator: *const Allocator) Error!void {
             var z = try allocator.create(Node(T));
-            for (z.c) |_, index| {
+            for (z.c, 0..) |_, index| {
                 z.c[index] = null;
                 z.key[index] = 0;
             }
@@ -95,7 +95,7 @@ pub fn Tree(comptime T: type) type {
             //diskWrite(x)
         }
 
-        fn insertNonfull(x: *Node(T), k: T, allocator: *Allocator) Error!void {
+        fn insertNonfull(x: *Node(T), k: T, allocator: *const Allocator) Error!void {
             var i = x.n;
             if (x.leaf) {
                 while (i >= 1 and k < x.key[i - 1]) : (i -= 1) {
@@ -149,7 +149,7 @@ test "verify tree creation" {
     var tree = Tree(i32){};
     var arena_allocator = std.heap.ArenaAllocator.init(std.heap.page_allocator);
     defer arena_allocator.deinit();
-    const allocator = &arena_allocator.allocator;
+    const allocator = &arena_allocator.allocator();
     try tree.create(allocator);
     try expect(tree.root.?.n == 0);
     try expect(tree.root.?.leaf);
@@ -159,7 +159,7 @@ test "search non-existent element" {
     var tree = Tree(i32){};
     var arena_allocator = std.heap.ArenaAllocator.init(std.heap.page_allocator);
     defer arena_allocator.deinit();
-    const allocator = &arena_allocator.allocator;
+    const allocator = &arena_allocator.allocator();
     try tree.create(allocator);
     try tree.insert(3, allocator);
     var result = Tree(i32).search(tree.root, 4);
@@ -170,7 +170,7 @@ test "search an existing element" {
     var tree = Tree(i32){};
     var arena_allocator = std.heap.ArenaAllocator.init(std.heap.page_allocator);
     defer arena_allocator.deinit();
-    const allocator = &arena_allocator.allocator;
+    const allocator = &arena_allocator.allocator();
     try tree.create(allocator);
     try tree.insert(3, allocator);
     var result = Tree(i32).search(tree.root, 3);
@@ -184,7 +184,7 @@ test "search with u8 as key" {
     var tree = Tree(u8){};
     var arena_allocator = std.heap.ArenaAllocator.init(std.heap.page_allocator);
     defer arena_allocator.deinit();
-    const allocator = &arena_allocator.allocator;
+    const allocator = &arena_allocator.allocator();
     try tree.create(allocator);
     try tree.insert('F', allocator);
     try tree.insert('S', allocator);
@@ -201,7 +201,7 @@ test "search for an element with multiple nodes" {
     var tree = Tree(i32){};
     var arena_allocator = std.heap.ArenaAllocator.init(std.heap.page_allocator);
     defer arena_allocator.deinit();
-    const allocator = &arena_allocator.allocator;
+    const allocator = &arena_allocator.allocator();
     try tree.create(allocator);
     const values = [_]i32{ 15, 18, 17, 6, 7, 20, 3, 13, 2, 4, 9 };
     for (values) |v| {

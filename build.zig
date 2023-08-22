@@ -1,16 +1,14 @@
 const Builder = @import("std").build.Builder;
-const fmt = std.fmt;
 
 pub fn buildExample(b: *Builder, comptime path: []const u8, comptime name: []const u8) void {
-    // Standard release options allow the person running `zig build` to select
-    // between Debug, ReleaseSafe, ReleaseFast, and ReleaseSmall.
-    const mode = b.standardReleaseOptions();
+    //TODO: find a way to include these in the build
+    // const target = b.standardTargetOptions(.{});
+    // const optimize = b.standardOptimizeOption(.{});
 
-    const exe = b.addExecutable(name, path ++ "/" ++ name ++ ".zig");
-    exe.setBuildMode(mode);
-    exe.install();
+    const exe = b.addExecutable(.{ .name = name, .root_source_file = .{ .path = path ++ "/" ++ name ++ ".zig" } });
+    b.installArtifact(exe);
 
-    const run_cmd = exe.run();
+    const run_cmd = b.addRunArtifact(exe);
     run_cmd.step.dependOn(b.getInstallStep());
     if (b.args) |args| {
         run_cmd.addArgs(args);

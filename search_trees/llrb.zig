@@ -35,7 +35,7 @@ fn Tree(comptime T: type) type {
             return null;
         }
 
-        pub fn insert(self: *Tree(T), value: T, allocator: *Allocator) !void {
+        pub fn insert(self: *Tree(T), value: T, allocator: *const Allocator) !void {
             self.root = try insertNode(self.root, value, allocator);
             self.root.?.color = BLACK;
         }
@@ -71,7 +71,7 @@ fn Tree(comptime T: type) type {
             return x.?;
         }
 
-        fn insertNode(node: ?*Node(T), value: T, allocator: *Allocator) Error!*Node(T) {
+        fn insertNode(node: ?*Node(T), value: T, allocator: *const Allocator) Error!*Node(T) {
             if (node != null) {
                 var h = node.?;
                 if (isRed(h.left) and isRed(h.right)) {
@@ -117,7 +117,7 @@ test "search an existing element" {
     var tree = Tree(i32){};
     var arena_allocator = std.heap.ArenaAllocator.init(std.heap.page_allocator);
     defer arena_allocator.deinit();
-    const allocator = &arena_allocator.allocator;
+    const allocator = &arena_allocator.allocator();
     try tree.insert(3, allocator);
     var result = tree.search(3);
     try expect(result.?.value == 3);
@@ -128,7 +128,7 @@ test "search non-existent element" {
     var tree = Tree(i32){};
     var arena_allocator = std.heap.ArenaAllocator.init(std.heap.page_allocator);
     defer arena_allocator.deinit();
-    const allocator = &arena_allocator.allocator;
+    const allocator = &arena_allocator.allocator();
     try tree.insert(3, allocator);
     var result = tree.search(4);
     try expect(result == null);
@@ -139,7 +139,7 @@ test "search for an element with multiple nodes" {
     const values = [_]i32{ 15, 18, 17, 6, 7, 20, 3, 13, 2, 4, 9 };
     var arena_allocator = std.heap.ArenaAllocator.init(std.heap.page_allocator);
     defer arena_allocator.deinit();
-    const allocator = &arena_allocator.allocator;
+    const allocator = &arena_allocator.allocator();
     for (values) |v| {
         try tree.insert(v, allocator);
     }

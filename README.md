@@ -20,7 +20,7 @@ The purpose of this project is to provide example implementations of algorithms 
 
 ## Prerequisite <a name = "prerequisite"></a>
 
-- [Zig](https://ziglang.org/download/) 0.8+
+- [Zig](https://ziglang.org/download/) 0.11+
 
 ## Running <a name = "running"></a>
 

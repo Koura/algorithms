@@ -67,7 +67,7 @@ test "sorted array" {
     var array: [10]i32 = .{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
     var work_array: [10]i32 = .{0} ** 10;
     sort(&array, &work_array);
-    for (array) |value, i| {
+    for (array, 0..) |value, i| {
         try expect(value == (i + 1));
     }
 }
@@ -76,7 +76,7 @@ test "reverse order" {
     var array: [10]i32 = .{ 10, 9, 8, 7, 6, 5, 4, 3, 2, 1 };
     var work_array: [10]i32 = .{0} ** 10;
     sort(&array, &work_array);
-    for (array) |value, i| {
+    for (array, 0..) |value, i| {
         try expect(value == (i + 1));
     }
 }
@@ -85,7 +85,7 @@ test "unsorted array" {
     var array: [5]i32 = .{ 5, 3, 4, 1, 2 };
     var work_array: [5]i32 = .{0} ** 5;
     sort(&array, &work_array);
-    for (array) |value, i| {
+    for (array, 0..) |value, i| {
         try expect(value == (i + 1));
     }
 }
@@ -94,7 +94,7 @@ test "two last unordered" {
     var array: [10]i32 = .{ 1, 2, 3, 4, 5, 6, 7, 8, 10, 9 };
     var work_array: [10]i32 = .{0} ** 10;
     sort(&array, &work_array);
-    for (array) |value, i| {
+    for (array, 0..) |value, i| {
         try expect(value == (i + 1));
     }
 }
@@ -103,7 +103,7 @@ test "two first unordered" {
     var array: [10]i32 = .{ 2, 1, 3, 4, 5, 6, 7, 8, 9, 10 };
     var work_array: [10]i32 = .{0} ** 10;
     sort(&array, &work_array);
-    for (array) |value, i| {
+    for (array, 0..) |value, i| {
         try expect(value == (i + 1));
     }
 }
